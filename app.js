@@ -51,11 +51,8 @@ app.post('/unique', (req, res) => {
   const domain = req.body.domain;
   mc.incr(`${prefix}/${domain}`, 1, function (err, value) {
     if (err) {
+      res.status(400).send(err);
       console.log("Error setting key: " + err);
-      res.render('error', {
-        message: err.message,
-        error: err
-      });
     } else {
       res.send(`${prefix}${value}@${domain}`);
     }

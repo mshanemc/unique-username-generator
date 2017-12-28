@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // catch 404 and forward to error handler
 app.post('/unique', (req, res) => {
   console.log('heard post');
+  console.log(request.body);
   const prefix = req.body.prefix;
   const domain = req.body.domain;
   mc.increment(`${prefix}/${domain}`, 1, function (err, value) {

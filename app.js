@@ -31,7 +31,7 @@ router.post('/unique', (req, res) => {
       res.status(400).send(err);
       console.log("Error setting key: " + err);
     } else {
-      res.send(`${prefix}${value}@${domain}`);
+      res.json({message: `${prefix}${value}@${domain}`});
     }
   });
 

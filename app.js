@@ -20,7 +20,7 @@ app.post('/unique', (req, res) => {
   console.log('heard post');
   const prefix = req.body.prefix;
   const domain = req.body.domain;
-  mc.incr(`${prefix}/${domain}`, 1, function (err, value) {
+  mc.increment(`${prefix}/${domain}`, 1, function (err, value) {
     if (err) {
       res.status(400).send(err);
       console.log("Error setting key: " + err);

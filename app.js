@@ -24,6 +24,7 @@ app.use(cookieParser());
 
 // catch 404 and forward to error handler
 router.post('/unique', (req, res) => {
+  console.log('heard post');
   const prefix = req.body.prefix;
   const domain = req.body.domain;
   mc.incr(`${prefix}/${domain}`, 1, function (err, value) {
